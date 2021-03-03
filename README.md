@@ -1,5 +1,8 @@
 # 패스트캠퍼스와 함께하는 알고리즘 공부
-
+- pyCharm 이용한 가상환경 -> jupyterlab설치
+    ```
+    pip install jupyterlab # 아나콘다 설치 대신 jupyterlab만 이용하기
+    ```
 ### pip 패키지 관리
 현재 설치되어있는 패키지 정보를 저장하기
 ```
