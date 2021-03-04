@@ -2,6 +2,7 @@
 - pyCharm 이용한 가상환경 -> jupyterlab설치
     ```
     pip install jupyterlab # 아나콘다 설치 대신 jupyterlab만 이용하기
+    jupyter lab # 실행 명령어
     ```
     <p align="center">
     <img src="https://user-images.githubusercontent.com/62678380/109888251-8617af00-7cc6-11eb-94d9-7c2fdc154299.png" width="500"/>
