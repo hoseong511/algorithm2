@@ -18,12 +18,21 @@
 
 ### Queue
 ### Stack
-### Linked List
+### LinkedList
 - node(data+pointer)
   - data  
   - pointer는 노드 안에서 다음이나 이전의 노드와의 연결 정보를 갖고있음
 - node의 주소를 구하는 법, 데이터와 pointer를 붙이는 법
   - 객체를 이용해서 데이터와 pointer를 붙이기
+    ```python
+    class Node:
+      def __init__(self, data, next=None):
+        self.data = data
+        self.next = next
+        
+    node1 = Node(1) # 노드객체생성
+    node1 = head # 첫 노드를 head로 관리
+    ```    
   - 현재 노드의 주소정보와 데이터, 포인터(다음주소)
   <p align="center"><img src="https://user-images.githubusercontent.com/62678380/110879947-3158e180-8321-11eb-8076-834580380419.png">
     </p>
