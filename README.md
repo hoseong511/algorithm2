@@ -31,6 +31,8 @@
         self.next = next
         
     node1 = Node(1) # 노드객체생성
+    node2 = Node(2)
+    node1.next = node2
     node1 = head # 첫 노드를 head로 관리
     ```    
   - 현재 노드의 주소정보와 데이터, 포인터(다음주소)
