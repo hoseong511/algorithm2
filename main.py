@@ -1,16 +1,12 @@
-# This is a sample Python script.
+# import sys
+# n, x = map(int,input().split())
+# arr = list(map(int,input().split()))
+# for i in arr:
+#     print( "%d " %i if i < x else "", end="")
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+import sys
+n = int(input())
+arr = [sys.stdin.readline() for i in range(n)]
+for i in range(n):
+    a, b =map(int, arr[i].rstrip().split())
+    print("Case #%d: %d" %(i+1, a+b))
