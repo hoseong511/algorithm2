@@ -35,6 +35,9 @@ for index in range(n):
     print(0 if len(arr) !=0 else 1)
   elif cmd == "top":
     print(arr[-1] if len(arr) !=0 else -1)
+    
+    
+  
 
 # while(True):
 #     a,b = map(int, input().spllit())
