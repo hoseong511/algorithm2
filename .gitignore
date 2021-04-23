@@ -146,4 +146,4 @@ sampleReact/
 node_modules/
 
 *.txt
-.vscode
+.vscode/
