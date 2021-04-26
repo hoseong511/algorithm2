@@ -43,4 +43,3 @@ while True:
       break
     lst, result = result, lst
 print(f"{result[0] % 10 * 10 + result[1] % 10}%")
-
