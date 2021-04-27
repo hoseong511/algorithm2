@@ -9,8 +9,8 @@ def candy_toss(student_num, candy_arr, result=0):
           for i,n in enumerate(candy_arr)] # 사탕을 오른쪽으로 전달
     arr = list(map(lambda x : int(x) if int(x) % 2 == 0 else int(x)+1, arr)) # 홀수개인 아이에게 사탕을 하나씩
     result += 1
-    count = candy_toss(student_num, arr, result)
-    return count
+    result = candy_toss(student_num, arr, result) # result를 전달
+    return result
 T= int(sys.stdin.readline())
 for _ in range(T):
   N, arr = int(sys.stdin.readline()), list(map(lambda x : int(x) if int(x) % 2 == 0 else int(x)+1, sys.stdin.readline().split()))
