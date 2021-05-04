@@ -11,9 +11,4 @@ while True:
                 for i in range(j*3,(j+1)*3)]
       print('')
     print('')
-  # for j in range(9):
-  #   [print(f'{i} * {j+1} = {" "+ str(i * (j+1)) if i * (j+1)<=9 else i * (j+1) }',
-  #            end='   ') 
-  #             for i in arr]
-  #   print('')
   break

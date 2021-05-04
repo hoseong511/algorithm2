@@ -1,5 +1,6 @@
 from functools import reduce,cache
-print(reduce(lambda x,y: x//y, map(int,input().split())))
+a, b = map(int,input().split())
+print(a%b)
 
 @cache # memoizaition
 def factorial(n):
