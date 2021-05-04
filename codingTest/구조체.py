@@ -1,26 +1,33 @@
-table = {}
-for i in range(int(input())):
-  arr = input().split()
-  table[arr[0]] = list(map(int,arr[1:]))
-arr = list(table.items())
-first = ''
-for i in range(3):
-  result = sorted(arr, key = lambda x: x[1][i], reverse=True)
-  if i == 0:
-    first = result[0][0]
-    print(first, end=' ')
-    continue
-  result = [ [stu[0],stu[1][i]] for idx, stu in enumerate(result) ]
-  tmp = result[0][1] # tmp는 가장높은점수
-  rank = 1
-  for idx,j in enumerate(result):
-    if tmp != j[1]:
-      tmp = j[1]
-      j[1] = idx+1
-      rank = idx+1
-    else:
-      j[1] = rank
-  
-    if j[0] == first : # 1과목 1등인 학생의 다른 과목 석차
-      print(j[1], end=' ')
+class Table:
+  def setScore(self,name, s1,s2,s3):
+    self.name = name
+    self.s1 = int(s1)
+    self.s2 = int(s2)
+    self.s3 = int(s3)
 
+table = [0] * int(input())
+for i in range(len(table)):
+  name, s1,s2,s3 = input().split()
+  table[i] = Table()
+  table[i].setScore(name, s1,s2,s3)
+first = sorted(table, key= lambda x: x.s1, reverse=True)
+second = sorted(table, key= lambda x: x.s2, reverse=True)
+third = sorted(table, key= lambda x: x.s3, reverse=True)
+print(first[0].name, end=' ')
+rank = 1
+for i in range(len(second)):
+  if i > 0:
+      if second[i-1].s2 != second[i].s2:
+        rank = i+1
+  if second[i] == first[0]:  # 객체 주소가 같은지 확인한다. -> 동명이인이 있음
+    print(rank, end = ' ')
+    rank = 1
+    break
+for i in range(len(third)):
+  if i > 0:
+      if third[i-1].s3 != third[i].s3:
+        rank = i+1
+  if third[i]== first[0]:  
+    print(rank, end = ' ')
+    break
+      
