@@ -1,5 +1,10 @@
+import sys
+sys.setrecursionlimit(1000000)
+# print(sys.getrecursionlimit())
+
 def add(a): 
-  result = a * (a + 1) / 2
-  return int(result)
+  if a <= 1:
+    return 1
+  return a + add(a-1) 
 a = int(input())
 print(add(a))
