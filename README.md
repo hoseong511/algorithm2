@@ -40,7 +40,7 @@
       ```
   4. 완료   
        <img width="1285" alt="스크린샷 2021-06-07 오전 1 21 49" src="https://user-images.githubusercontent.com/62678380/120931946-bd1ab800-c72e-11eb-82c9-d65aebf927db.png">   
-       control + f5
+       control + f5   
       ![ScreenRecorderProject5_2](https://user-images.githubusercontent.com/62678380/120931861-55fd0380-c72e-11eb-9629-bbaa74260461.gif)
 
 ### Queue
