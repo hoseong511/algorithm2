@@ -12,35 +12,24 @@
 입력
 첫째 줄에 문자열 S가 주어진다. S의 길이는 100,000 이하이다.
 '''
-import sys
-rule = [' ', '>', '<']
-data = []
-stack=''
-flag = True # <> 감지기
-for char in sys.stdin.readline():
-  if char in rule:
-    if flag and char == ' ' :
-      if stack != '':
-        data.append(stack[::-1])
-      data.append(char)
-      stack = '' # 초기화
-      continue
-    if char == '>':
-      if stack != '':
-        data.append(stack)
-      data.append(char)
-      flag= True
+stack, ans, flag = '', '', True
+
+for char in input():
+  if char == ' ':
+    if flag :
+      ans += stack[::-1] + ' '
       stack = ''
-      continue
-    if char == '<':
-      if stack != '':
-        data.append(stack[::-1])
-      data.append(char)
-      flag = False
-      stack = ''
-      continue
-  stack += char   
-if stack != '':
-  data.append(stack[::-1])
-print(''.join(data), end='')
+    else: ans += ' '
+  elif char == '<':
+    flag = False
+    ans += stack[::-1]+'<'
+    stack = ''
+  elif char == '>':
+    flag = True
+    ans += '>'
+  else:
+    if flag: stack += char
+    else: ans += char
+ans += stack[::-1]
+print(ans)
   
