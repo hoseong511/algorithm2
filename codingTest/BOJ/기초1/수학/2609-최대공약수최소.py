@@ -10,7 +10,7 @@ def gcd(n, m):
 
 n,m = map(int, input().split())
 a = gcd(n,m)
-b = a * n/a * m/a 
+b = a * n/a * m/a # lcm(n,m) = gcd(n,m) * n/gcd(n,m) * m/gcd(n,m)
 print(a)
 print(int(b))
 # 24 , 18 , 6
