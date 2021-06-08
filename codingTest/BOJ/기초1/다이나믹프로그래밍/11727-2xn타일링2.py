@@ -17,5 +17,12 @@ memo[1] = 1
 memo[2] = 2
 n = int(input())
 for i in range(3, n + 1):
-  memo[i] = memo[i-1] + memo[i-2]
+  memo[i] = memo[i-1] + memo[i-2]*2
 print(memo[n] % 10007)
+
+'''
+규칙을 나열하면서 타일을 붙이는 방법에도 규칙이 있음을 알 수 있다
+1. 2x(n-1) -> 2x1타일을 1개 붙인다.
+2-1. 2x(n-2) -> 1x2타일을 2개 붙인다.
+2-2. 2x(n-2) -> 2x2타일을 1개 붙인다.
+'''

@@ -12,10 +12,12 @@
 출력
 첫째 줄에 2×n 크기의 직사각형을 채우는 방법의 수를 10,007로 나눈 나머지를 출력한다.
 '''
+
 memo = [0] * 1001
 memo[1] = 1
 memo[2] = 3
 n = int(input())
 for i in range(3, n + 1):
-  memo[i] = memo[i-1] + memo[i-2]*2 
+  memo[i] = memo[i-1] + memo[i-2]
 print(memo[n] % 10007)
+
