@@ -11,6 +11,6 @@ for _ in range(T):
     print(memo[n])
     continue
   for i in range(4, n+1):
-    memo[i] = (memo[i-1] + memo[i-2] + memo[i-3])
+    memo[i] = (memo[i-1] + memo[i-2] + memo[i-3])%1000000009
 
-  print(memo[n]%1000000009)
+  print(memo[n])
