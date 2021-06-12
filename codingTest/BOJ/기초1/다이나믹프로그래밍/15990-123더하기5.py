@@ -4,20 +4,11 @@ from datetime import timedelta
 
 start = timer()
 T = int(sys.stdin.readline())
-for _ in range(T):
-  # 나는 Bottom이 좋아
-  memo = [0]*1000001
-  memo[1] = 1
-  memo[2] = 1
-  memo[3] = 3
-  n = int(sys.stdin.readline())
-  if n <= 3:
-    print(memo[n])
-    continue
-  for i in range(4, n+1):
-    memo[i] = (memo[i-1] + memo[i-2] + memo[i-3])%1000000009
+memo = [[i for i in range(10)] for i in range(101)]
+memo[1].pop(0) # 0제거
 
-  print(memo[n])
+print(len(memo[T])%1000000000)
+  
 
 end = timer()
 print(timedelta(seconds=end-start))
