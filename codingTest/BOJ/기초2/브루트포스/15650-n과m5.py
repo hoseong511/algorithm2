@@ -4,6 +4,7 @@ def permutation(array, r):
       yield [array[i]]
     else:
       for next in permutation(array[:i]+array[i+1:], r-1):
+        print(next)
         yield [array[i]] + next
 
 N, M = map(int, input().split())
