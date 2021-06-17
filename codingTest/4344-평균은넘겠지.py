@@ -5,3 +5,8 @@ for _ in range(int(input())):
   avg = sum(scores)/N
   target = len(list(filter(lambda x: x > avg, scores)))
   print("%.3f%%" %round(target/N*100,3))
+
+
+'''
+출력의 문제..
+'''
