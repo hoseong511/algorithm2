@@ -1,17 +1,21 @@
-N, M = map(int,input().split())
+def ck_wb(a, b):
+  ret_w, ret_b = 0, 0
+  for i in range(64):
+    x = i // 8 + a
+    y = i % 8 + b
+    if (x+y) % 2 == 0:
+      if Map[x][y] != 'W': ret_w+=1
+      if Map[x][y] != 'B': ret_b+=1 
+    else:
+      if Map[x][y] != 'B': ret_w+=1
+      if Map[x][y] != 'W': ret_b+=1
+  return [ret_w, ret_b]
+  
+N, M = map(int, input().split())
 Map = [list(input()) for _ in range(N)]
-# [print(*i, sep="") for i in Map]
-dx, dy = [0, -1, 0, 1], [1, 0, -1, 0]
-ck = [[False for _ in range(M)] for _ in range(N)]
-
-for x in range(N):
-  for y in range(M):
-    if ck[x][y]:
-      continue
-    for w in range(4):
-      xx, yy = x+dx[w], y+dy[w]  
-      if xx<0 or yy<0 or xx==N or yy==M:
-        continue
-      if Map[x][y] != Map[xx][yy]:
-        continue
-      Map[xx][yy]
+min_num = 2500
+for a in range(N-7):
+  for b in range(M-7):
+    data = ck_wb(a,b)
+    min_num= min([min_num] +data)
+print(min_num)

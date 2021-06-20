@@ -1,6 +1,6 @@
 N, K = map(int, input().split())
 queue, result = [i for i in range(1, N+1)], []
-
+print(queue)
 for i in range(N):
   if len(queue) < K:
     tmp = K % len(queue)
