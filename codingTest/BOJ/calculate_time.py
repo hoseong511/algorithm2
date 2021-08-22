@@ -10,4 +10,3 @@ min = cal_time // 60
 hour = min // 60
 min = min % 60
 print(f"{hour}시간 {min}분")
-  
