@@ -145,5 +145,4 @@ conf/
 sampleReact/
 node_modules/
 
-*.txt
 .vscode/
