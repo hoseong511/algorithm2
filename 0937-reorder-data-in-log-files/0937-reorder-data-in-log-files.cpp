@@ -1,60 +1,24 @@
 class Solution {
 public:
-	bool strnstr(const string& str1, const string& str2, int n)
-	{
-		for (int i = 0; i < n; i++) {
-			if (str1[i] != str2[i])
-				return false;
-		}
-		return true;
-	};
-
-	void set_data(string& str)
-	{
-		string::size_type n = str.find(' ');
-		string second(str, n + 1, str.length() -n - 1);
-		if (isdigit(second[0]))
-			dig.push_back(str);
-		else
-			v_let.push_back({string(str, 0, n), string(str, n + 1, str.length() - n - 1)});
-	}
-
-	static bool cmp(pair<string,string>& a, pair<string,string>& b)
-	{
-		if (a.second == b.second)
-			return a.first < b.first;
-		return a.second < b.second;
-	}
-
-	vector<string> sort_let()
-	{
-		vector<pair<string,string>> vec;
-		vector<string> res;
-		
-		sort(v_let.begin(), v_let.end(), cmp);
-		vector<pair<string,string>>::iterator it;
-		for (it = v_let.begin(); it != v_let.end(); it++)
-		{
-			res.push_back((*it).first + " " + (*it).second);
-		}
-		return res;
-	}
-
-	vector<string> reorderLogFiles(vector<string>& logs) {
-		vector<string> let;
-		vector<string>::iterator it;
-		for (it = logs.begin(); it < logs.end(); it++) {
-			set_data(*it);
-		}
-		logs.clear();
-		let = sort_let();
-		for (size_t i = 0; i < dig.size(); i++)
-		{
-			let.push_back(dig[i]);
-		}
-		return let;
-	}
-private:
-	vector<pair<string,string>> v_let;
-	vector<string> dig;
+    vector<string> reorderLogFiles(vector<string>& logs) {
+        vector<string> letterLogs;
+        vector<string> digitLogs;
+        for (const auto& log : logs) {
+            int idx = log.find(' ');
+            if (log[idx+1] >= 'a' && log[idx+1] <= 'z') {
+                letterLogs.push_back(log);
+            } else {
+                digitLogs.push_back(log);
+            }
+        }
+        sort(letterLogs.begin(), letterLogs.end(), [](const string &log1, const string &log2) {
+            int l1Idx = log1.find(' ');
+            int l2Idx = log2.find(' ');
+            string lc1 = log1.substr(l1Idx + 1);
+            string lc2 = log2.substr(l2Idx + 1);
+            return lc1 == lc2 ? log1 < log2 : lc1 < lc2;
+        });
+        letterLogs.insert(letterLogs.end(), digitLogs.begin(), digitLogs.end());
+        return letterLogs;
+    }
 };
