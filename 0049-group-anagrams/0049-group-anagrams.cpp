@@ -1,29 +1,13 @@
 class Solution {
 public:
-	typedef vector<vector<string>>::iterator vv_it;
-
-	void load_data(string word)
-	{
-		string tmp(word);
-
-		sort(tmp.begin(), tmp.end(), [](char& a, char& b){
-			return a < b;
-		});
-		if (dic.find(tmp) != dic.end()) {
-			dic[tmp].push_back(word);
-			return ;
-		}
-		dic.insert({tmp, {word}});
-	}
-
 	vector<vector<string>> groupAnagrams(vector<string>& strs) {
-		for (size_t i = 0; i < strs.size(); i++)
-		{
-			load_data(strs[i]);
+		for (auto x: strs) {
+			string tmp = x;
+			sort(tmp.begin(), tmp.end());
+			dic[tmp].push_back(x);
 		}
-		map<string, vector<string>>::iterator it;
-		for (it = dic.begin(); it != dic.end(); it++) {
-			data.push_back((*it).second);
+		for (auto x: dic) {
+			data.push_back(x.second);
 		}
 		return data;
 	}
