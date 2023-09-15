@@ -1,5 +1,4 @@
 #include <iostream>
-#include <sstream>
 #include <vector>
 
 using namespace std;
@@ -13,29 +12,28 @@ int main()
 	for (int i = 0; i < N; i++)
 	{
 		string cmd;
-		int num;
+		int num = 0;
 		scanf("%s %d\n", buf, &num);
 		cmd = buf;
 		if (cmd == "push") {
 			stack.push_back(num);
 		} else if (cmd == "top") {
 			if (stack.size() == 0) {
-				cout << -1 << endl;
+				cout << -1 << '\n';
 				continue;
 			}
-			cout << stack.back() << endl;
+			cout << stack.back() << '\n';
 		} else if (cmd == "size") {
-			cout << stack.size() << endl;
+			cout << stack.size() << '\n';
 		} else if (cmd == "pop")  {
 			if (stack.size() == 0) {
-				cout << -1 << endl;
+				cout << -1 << '\n';
 				continue;
 			}
-			cout << stack.back() << endl;
+			cout << stack.back() << '\n';
 			stack.pop_back();
 		} else if (cmd == "empty") {
-			cout << stack.empty() << endl;
+			cout << stack.empty() << '\n';
 		}
 	}
-	
 }
