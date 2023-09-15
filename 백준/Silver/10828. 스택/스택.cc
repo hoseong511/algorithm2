@@ -7,18 +7,16 @@ using namespace std;
 int main()
 {
 	int N;
+	char buf[100];
 	vector<int> stack;
 	scanf("%d\n", &N);
 	for (int i = 0; i < N; i++)
 	{
-		string arg, cmd;
+		string cmd;
 		int num;
-		stringstream stream;
-		getline(cin, arg);
-		stream.str(arg);
-		stream >> cmd;
+		scanf("%s %d\n", buf, &num);
+		cmd = buf;
 		if (cmd == "push") {
-			stream >> num;
 			stack.push_back(num);
 		} else if (cmd == "top") {
 			if (stack.size() == 0) {
