@@ -14,6 +14,9 @@ int main()
 	{
 		string str, target;
 		stringstream stream;
+		cin.tie(0);
+		cout.tie(0);
+		ios_base::sync_with_stdio(false);
 		getline(cin, str);
 		stream.str(str);
 		while (stream >> target) {
