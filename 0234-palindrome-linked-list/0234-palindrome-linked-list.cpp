@@ -12,16 +12,22 @@
 class Solution {
 public:
 	bool isPalindrome(ListNode* head) {
-		vector<int> tmp;
-		while (head) {
-			tmp.push_back(head->val);
-			head = head->next;
+		ListNode *fast = head, *slow = head, *rev = 0, *tmp;
+		while (fast && fast->next) {
+			fast = fast->next->next;
+			tmp = rev;
+			rev = new ListNode(slow->val);
+			rev->next = tmp;
+			slow = slow->next;
 		}
-		for (size_t i = 0, j = tmp.size() - 1; i < tmp.size() / 2; i++,j--)
-		{
-			if (tmp[i] == tmp[j])
-				continue ;
-			return false;
+		if (fast) {
+			slow = slow->next;
+		}
+		while (slow) {
+			if (rev->val != slow->val)
+				return false;
+			slow = slow->next;
+			rev = rev->next;
 		}
 		return true;
 	}
