@@ -19,7 +19,7 @@ public:
 	ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
 		ListNode* tar = 0, *res, *tmp;
 		int up = 0;
-		while (l1 || l2) {
+		while (l1 || l2 || up) {
 			int sum = (l1 ? l1->val : 0) + (l2 ? l2->val : 0) + up;
 			up = 0;
 			if (sum > 9) up = 1;
@@ -33,10 +33,6 @@ public:
 			}
 			if (l1)	l1 = l1->next;
 			if (l2) l2 = l2->next;
-		}
-		if (up) {
-			tmp = init(up);
-			tar->next = tmp;
 		}
 		return res;
 	}
