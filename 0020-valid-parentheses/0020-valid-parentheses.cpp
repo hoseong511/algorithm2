@@ -1,16 +1,17 @@
 class Solution {
 public:
 	bool isValid(string s) {
-		vector<char> res;
+		string res;
+		map<char,char> mp;
+		mp['('] = ')';
+		mp['{'] = '}';
+		mp['['] = ']';
 		for (auto x : s) {
 			if (res.size() > 0) {
-				if ((res.back() == '(' && x == ')') ||
-					(res.back() == '[' && x == ']') ||
-					(res.back() == '{' && x == '}')) {
+				if (mp[res.back()] == x) {
 						res.pop_back();
 						continue;
 					}
-					
 			}
 			res.push_back(x);
 		}
