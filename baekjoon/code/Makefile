@@ -3,7 +3,7 @@ ifdef OUT
 	SRC= $(OUT)
 	OBJ= $(patsubst %.o, $(OBJDIR)/%.o, $(SRC:%.cpp=%.o))
 endif
-CXXFLAGS= -Wall -Werror -Wextra -g3 -std=c++98
+CXXFLAGS= -Wall -Werror -Wextra -g3 -fsanitize=address -std=c++11
 OBJDIR= obj
 
 $(OBJDIR)/%.o : %.cpp
@@ -14,4 +14,4 @@ $(NAME) : $(OBJ)
 	$(CXX) $(CXXFLAGS) $^ -o $@
 
 clean :
-	$(RM) -rf $(OBJDIR) *.out
+	$(RM) -r $(OBJDIR) *.out

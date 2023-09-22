@@ -9,7 +9,7 @@ int main()
 	char input[1000001];
 	int byte = read(0, input, 1000000);
 	if (byte)
-		input[strlen(input) - 1] = 0;
+		input[byte - 1] = 0;
 	else
 		return 1;
 	int len = strlen(input);
