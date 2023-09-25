@@ -5,31 +5,29 @@ public:
 	}
 		
 	void push(int x) {
-		stack.push(x);
+		int size = q.size();
+		q.push(x);
+		while (size > 0) {
+			q.push(q.front());
+			q.pop();
+			size--;
+		}
 	}
 	int pop() {
-		int top = stack.back();
-		while (!stack.empty()) {
-			if (top != stack.front())
-				tmp.push(stack.front());
-			stack.pop();
-		}
-		while (!tmp.empty()) {
-			stack.push(tmp.front());
-			tmp.pop();
-		}
-		return top;
+		int res = top();
+		q.pop();
+		return res;
 	}
 		
 	int top() {
-		return stack.back();
+		return q.front();
 	}
 		
 	bool empty() {
-		return stack.empty();
+		return q.empty();
 	}
 private:
-	queue<int> stack;
+	queue<int> q;
 	queue<int> tmp;
 };
 /**
