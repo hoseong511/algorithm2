@@ -1,39 +1,40 @@
-#include <iostream>
+#include <cstdio>
+#include <string>
 #include <vector>
 
 using namespace std;
 
 int main()
 {
-	int N;
-	char buf[100];
+	int T;
 	vector<int> stack;
-	scanf("%d\n", &N);
-	for (int i = 0; i < N; i++)
-	{
-		string cmd;
-		int num = 0;
-		scanf("%s %d\n", buf, &num);
-		cmd = buf;
+	scanf("%d", &T);
+	for (int i = 0; i < T; i++) {
+		char input[6] = {0,};
+		int n = 0;
+		scanf("%s", input);
+		string cmd(input);
 		if (cmd == "push") {
-			stack.push_back(num);
-		} else if (cmd == "top") {
-			if (stack.size() == 0) {
-				cout << -1 << '\n';
-				continue;
+			scanf("%d", &n);
+			stack.push_back(n);
+		} else if (cmd == "pop") {
+			if (stack.empty()) {
+				printf("%d\n", -1);
+				continue ;
 			}
-			cout << stack.back() << '\n';
-		} else if (cmd == "size") {
-			cout << stack.size() << '\n';
-		} else if (cmd == "pop")  {
-			if (stack.size() == 0) {
-				cout << -1 << '\n';
-				continue;
-			}
-			cout << stack.back() << '\n';
+			printf("%d\n", stack.back());
 			stack.pop_back();
+		} else if (cmd == "size") {
+			printf("%lu\n", stack.size());
 		} else if (cmd == "empty") {
-			cout << stack.empty() << '\n';
+			printf("%d\n", stack.empty());
+		} else if (cmd == "top") {
+			if (stack.empty()) {
+				printf("%d\n", -1);
+				continue ;
+			}
+			printf("%d\n", stack.back());
 		}
 	}
+	return 0;
 }
