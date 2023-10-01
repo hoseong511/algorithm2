@@ -1,35 +1,26 @@
-#include <iostream>
-#include <sstream>
+#include <cstdio>
 #include <vector>
-#include <algorithm>
 
 using namespace std;
 
 int main()
 {
-	int N;
-	scanf("%d\n", &N);
-	for (int i = 0; i < N; i++)
-	{
-		vector<char> lst;
-		string str;
-		char buf[100];
-		scanf("%s", buf);
-		str = buf;
-		for (size_t i = 0; i < str.size(); i++)
-		{
-			if (lst.size() > 0) {
-				if (lst.back() == '(' && str[i] == ')') {
-					lst.pop_back();
+	int T;
+	scanf("%d", &T);
+	for (int i = 0; i< T; i++) {
+		char input[51] = {0,};
+		vector<char> stack;
+		scanf("%s", input);
+		for (int i = 0; input[i]; i++) {
+			if (!stack.empty()) {
+				if (stack.back() == '(' && input[i] == ')') {
+					stack.pop_back();
 					continue ;
 				}
 			}
-			lst.push_back(str[i]);
+			stack.push_back(input[i]);
 		}
-		
-		if (lst.size() == 0)
-			cout << "YES" << '\n';
-		else
-			cout << "NO" << '\n';
+		printf("%s\n", stack.empty() ? "YES" : "NO");
 	}
+	return 0;
 }
