@@ -1,19 +1,27 @@
-#include <iostream>
-#include <algorithm>
+#include <cstdio>
+
+int check(int a, int b, int c)
+{
+	return (a * a + b * b == c * c);
+}
 
 int main()
 {
-	int arr[3];
-	while (true) {
-		std::cin >> arr[0] >> arr[1] >> arr[2];
-		if (arr[0] + arr[1] + arr[2] == 0)
-			break ;
-		std::sort(arr, arr+3);
-		if (arr[0] * arr[0] + arr[1] * arr[1] == arr[2] * arr[2])
-			std::cout << "right";
+	int a,b,c;
+	while (1) {
+		scanf("%d", &a);
+		scanf("%d", &b);
+		scanf("%d", &c);
+		if (a + b + c == 0)
+			break; 
+		if (check(a, b, c))
+			printf("right\n");
+		else if (check(a, c, b))
+			printf("right\n");
+		else if (check(b, c, a))
+			printf("right\n");
 		else
-			std::cout << "wrong";
-		std::cout << std::endl;
+			printf("wrong\n");
 	}
 	return 0;
 }
