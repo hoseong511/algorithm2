@@ -1,26 +1,23 @@
 #include <cstdio>
 #define MODNUM 1234567891
 
-
+typedef unsigned long long ull;
 
 int main()
 {
 	int L;
-	unsigned long long res = 0;
 	char ch;
+	ull res = 0;
+	ull r = 1;
+
 	scanf("%d\n", &L);
 	for (int i = 0; i < L; i++) {
 		scanf("%c", &ch);
 		char a = ch - 'a' + 1;
-		unsigned long long tmp = 1;
-		int j = 0;
-		while (j < i) {
-			tmp *= 31;
-			if (tmp >= MODNUM)
-				tmp %= MODNUM;
-			j++;
-		}
-		res += a * tmp;
+		res += a * r;
+		r *= 31;
+		if (r >= MODNUM)
+			r %= MODNUM;
 	}
 	printf("%llu\n", res % MODNUM);
 	return 0;
