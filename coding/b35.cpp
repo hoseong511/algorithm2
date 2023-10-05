@@ -1,5 +1,5 @@
 #include <cstdio>
-#define MODNUM 1234567891
+#define MODOPRD 1234567891
 
 typedef unsigned long long ull;
 
@@ -16,9 +16,9 @@ int main()
 		char a = ch - 'a' + 1;
 		res += a * r;
 		r *= 31;
-		if (r >= MODNUM)
-			r %= MODNUM;
+		if (r >= MODOPRD)
+			r %= MODOPRD;
 	}
-	printf("%llu\n", res % MODNUM);
+	printf("%llu\n", res % MODOPRD);
 	return 0;
 }
