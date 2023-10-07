@@ -1,6 +1,6 @@
 name := a.out
 CXXFLAGS = -fsanitize=address -std=c++11 -g3
-src := b49.cpp
+src := p3.cpp
 obj := $(src:%.cpp=objdir/%.o)
 
 objdir/%.o : %.cpp
