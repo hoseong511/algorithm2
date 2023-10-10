@@ -12,8 +12,8 @@ class Solution {
 public:
 	ListNode* merge(ListNode* left, ListNode* right)
 	{
-		ListNode* node = new ListNode(0);
-		ListNode* cur = node;
+		ListNode node;
+		ListNode* cur = &node;
 		while (left && right) {
 			if (left->val <= right->val) {
 				cur->next = left;
@@ -28,7 +28,7 @@ public:
 			cur->next = left;
 		if (right)
 			cur->next = right;
-		return node->next;
+		return node.next;
 	}
     ListNode* sortList(ListNode* head) {
 		if (head == NULL || head->next == NULL)
