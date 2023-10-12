@@ -8,7 +8,7 @@ struct ListNode {
 
 class Solution {
 public:
-	void search(ListNode* head)
+	ListNode* search(ListNode* head)
 	{
 		ListNode* fast = head;
 		ListNode* slow = head;
@@ -16,6 +16,9 @@ public:
 			slow = slow->next;
 			fast = fast->next->next;
 		}
+		if (fast)
+			slow = slow->next;
+		return slow;
 	}
     ListNode* sortList(ListNode* head) {
 		ListNode* node;
