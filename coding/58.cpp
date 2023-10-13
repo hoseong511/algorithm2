@@ -1,3 +1,6 @@
+#include <iostream>
+
+using namespace std;
 struct ListNode {
     int val;
     ListNode *next;
@@ -8,21 +11,41 @@ struct ListNode {
 
 class Solution {
 public:
-	ListNode* search(ListNode* head)
+	ListNode* merge(ListNode* left, ListNode* right)
 	{
+		ListNode node;
+		ListNode* cur = &node;
+		while (left && right) {
+			if (left->val <= right->val) {
+				cur->next = left;
+				left = left->next;
+			} else {
+				cur->next = right;
+				right = right->next;
+			}
+			cur = cur->next;
+		}
+		if (left)
+			cur->next = left;
+		if (right)
+			cur->next = right;
+		return node.next;
+	}
+    ListNode* sortList(ListNode* head) {
+		if (head == NULL || head->next == NULL)
+			return head;
 		ListNode* fast = head;
 		ListNode* slow = head;
+		ListNode* tmp = NULL;
 		while (fast && fast->next) {
+			tmp = slow;
 			slow = slow->next;
 			fast = fast->next->next;
 		}
-		if (fast)
-			slow = slow->next;
-		return slow;
-	}
-    ListNode* sortList(ListNode* head) {
-		ListNode* node;
-		return node;
+		tmp->next = nullptr;
+		ListNode* left = sortList(head);
+		ListNode* right = sortList(slow);
+		return merge(left, right);
     }
 };
 
@@ -42,5 +65,6 @@ int main()
 	add_node(&lst, 2);
 	add_node(&lst, 1);
 	add_node(&lst, 3);
+	ListNode* test = s.sortList(&lst);
 	return 0;
 }
