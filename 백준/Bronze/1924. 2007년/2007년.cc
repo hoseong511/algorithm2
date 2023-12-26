@@ -9,7 +9,7 @@ int main()
 	int res = 0;
 	string week[7] = {"SUN" , "MON", "TUE", "WED", "THU", "FRI", "SAT"};
 	cin >> M >> D;
-	for (int i = 1; M != 1 && i < M; i++) {
+	for (int i = 1; i <= M - 1; i++) {
 		if (i < 8) {
 			if (i % 2 == 1)
 				res += 31; // day 31
