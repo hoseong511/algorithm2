@@ -1,21 +1,19 @@
 #include <iostream>
-#include <string>
-#include <sstream>
-#include <limits.h>
-
+#define FAST ios::sync_with_stdio(false); cin.tie(NULL);
 using namespace std;
-
 int main()
 {
-	int N, num, low = INT_MAX, high= INT_MIN;
-	string str;
-	scanf("%d\n", &N);
-	getline(cin, str);
-	stringstream ss(str);
-	while (ss >> num) {
-		if (low > num) low = num;
-		if (high < num) high = num;
+	FAST;
+	int N, input;
+	int max = -1000001, min = 1000001;
+	cin >> N;
+	for (int i =0; i < N; i++) {
+		cin >> input;
+		if (max < input)
+			max = input;
+		if (min > input)
+			min = input;
 	}
-	cout << low << ' ' << high << '\n';
+	cout << min << ' ' << max;
 	return 0;
 }
