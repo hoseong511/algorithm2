@@ -7,6 +7,7 @@ int main()
 	FAST;
 	int M, D;
 	int res = 0;
+	string week[7] = {"SUN" , "MON", "TUE", "WED", "THU", "FRI", "SAT"};
 	cin >> M >> D;
 	for (int i = 1; M != 1 && i < M; i++) {
 		if (i < 8) {
@@ -23,29 +24,6 @@ int main()
 				res += 30; // day 30
 		}
 	}
-	switch ((res + D) % 7)
-	{
-	case 0:
-		cout << "SUN";
-		break;
-	case 1:
-		cout << "MON";
-		break ;
-	case 2:
-		cout << "TUE";
-		break ;
-	case 3:
-		cout << "WED";
-		break ;
-	case 4:
-		cout << "THU";
-		break ;
-	case 5:
-		cout << "FRI";
-		break ;
-	case 6:
-		cout << "SAT";
-		break ;
-	}
+	cout << week[(res + D) % 7];
 	return 0;
 }
