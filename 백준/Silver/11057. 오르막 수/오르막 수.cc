@@ -6,20 +6,18 @@ using namespace std;
 int main()
 {
 	int N;
-	int arr[1001][10] = {{0, }, };
-	fill(arr[1], arr[1] + 10, 1);
+	int arr[10] = {0, };
+	fill(arr, arr + 10, 1);
 	cin >> N;
 	for (int i = 2; i <= N; i++) {
-		for (int j = 0; j < 10; j++) {
-			for (int k = 0; k <= j; k++) {
-				arr[i][j] += arr[i-1][k];
-				arr[i][j] %= MOD;
-			}
+		for (int j = 1; j < 10; j++) {
+			arr[j] += arr[j-1];
+			arr[j] %= 10007;
 		}
 	}
 	int res = 0;
 	for (int i = 0; i < 10; i++) {
-		res += arr[N][i];
+		res += arr[i];
 		res %= MOD;
 	}
 	cout << res;
