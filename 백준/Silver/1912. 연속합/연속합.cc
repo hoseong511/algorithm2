@@ -14,14 +14,14 @@ int main()
 	int arr[100001] = {0, };
 	int p[100001] = {0, };
 	cin >> N;
+	int res = 0;
 	for (int i = 1; i <= N; i++)
 	{
 		cin >> arr[i];
-	}
-	p[1] = arr[1];
-	int res = p[1];
-	for (int i = 2; i <= N; i++)
-	{
+		if (i == 1) {
+			p[1] = arr[1];
+			res = p[1];
+		}
 		p[i] = max(arr[i], p[i-1] + arr[i]);
 		res = max(res, p[i]);
 	}
