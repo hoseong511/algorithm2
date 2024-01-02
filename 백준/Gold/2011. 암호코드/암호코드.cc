@@ -1,10 +1,9 @@
 #include <iostream>
 #define MOD 1000000
 using namespace std;
-int dp[5001]={0,};
+int dp[5001]={1,1, };
 int solution(string code, int n ) {
 	if(code[0]=='0') return 0;
-	dp[0]=dp[1]=1;
 	
 	for(int i=2;i<=n;i++){
 		if(code[i-1]!='0') dp[i]=dp[i-1]%MOD;
