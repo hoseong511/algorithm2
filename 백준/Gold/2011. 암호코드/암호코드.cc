@@ -23,7 +23,7 @@ int main()
 	}
 	for (int i = 2; i <= N; i++)
 	{
-		if (a[i] >= 1 && a[i] <= 9)
+		if (a[i] > 0 && a[i] < 10)
 			p[i] = (p[i - 1] + p[i]) % MOD;
 		int num = a[i] + a[i-1] * 10;
 		if (num >= 10 && num <= 26)
