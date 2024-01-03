@@ -1,22 +1,20 @@
-#include <cstdio>
-
+#include <iostream>
+#define FAST ios::sync_with_stdio(false); cin.tie(NULL);
 using namespace std;
-
 int main()
 {
-	int N;
-	int input;
-
-	scanf("%d", &N);
-	int arr[10001] = {0, };
+	FAST;
+	int N,k;
+	cin >> N;
+	int a[10001] = {0,};
 	for (int i = 1; i <= N; i++) {
-		scanf("%d", &input);
-		arr[input]++;
+		cin >> k;
+		a[k]++;
 	}
 	for (int i = 1; i < 10001; i++) {
-		while (arr[i] != 0) {
-			printf("%d\n", i);
-			--arr[i];
+		while (a[i] != 0) {
+			cout << i << '\n';
+			a[i]--;
 		}
 	}
 	return 0;
