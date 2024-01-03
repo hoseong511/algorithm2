@@ -1,27 +1,23 @@
 #include <iostream>
-#include <set>
+#include <vector>
+#include <algorithm>
 #define FAST ios::sync_with_stdio(false); cin.tie(NULL);
 
 using namespace std;
-
-struct Compare{
-	bool operator() (int a, int b) const {
-		return a < b;
-	}
-};
 
 int main()
 {
 	FAST;
 	int N;
-	set<int, Compare> data;
+	vector<int> data;
 	int input;
 
 	cin >> N;
+	data.assign(N, 0);
 	for (int i = 0; i < N; i++) {
-		cin >> input;
-		data.insert(input);
+		cin >> data[i];
 	}
+	sort(data.begin(), data.end());
 	for (auto x : data)
 		cout << x << '\n';
 	return 0;
