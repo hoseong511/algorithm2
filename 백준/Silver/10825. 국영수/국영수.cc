@@ -17,16 +17,10 @@ int main()
 		a[i] = {name, score};
 	}
 	sort(a, a + N, [](psv a, psv b){
-		if (a.second[0] == b.second[0]) {
-			if (a.second[1] == b.second[1]) {
-				if (a.second[2] == b.second[2]) {
-					return a.first < b.first;
-				}
-				return a.second[2] > b.second[2];
-			}
-			return a.second[1] < b.second[1];
-		}
-		return a.second[0] > b.second[0]; }
+		if (a.second[0] ^ b.second[0]) return a.second[0] > b.second[0];
+		if (a.second[1] ^ b.second[1]) return a.second[1] < b.second[1];
+		if (a.second[2] ^ b.second[2]) return a.second[2] > b.second[2];
+		return a.first < b.first; }
 	);
 	for (int i = 0; i < N; i++)
 	{
