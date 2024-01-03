@@ -18,14 +18,12 @@ int main()
 	{
 		cin >> a[i];
 	}
+	p[1] = a[1];
 	for (int i = 1; i <= N; i++)
 	{
-		p[i] = a[i];
 		for (int j = i; j >= 1; j--)
 		{
-			if (i - j > j)
-				break ;
-			p[i] = max(p[i], p[j] + p[i - j]);
+			p[i] = max(p[i], a[j] + p[i - j]);
 		}
 	}
 	cout << p[N];
