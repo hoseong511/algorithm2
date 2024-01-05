@@ -7,46 +7,97 @@
 // #pragma optimize("unroll-loops")j
 #define FAST ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 using namespace std;
+typedef struct node {
+	char val;
+	struct node *next;
+	struct node *prev;
+} t_node;
 
+t_node *head = NULL;
+t_node *cur = NULL;
 
-std::ostream& operator<< (ostream& out, list<char> lst)
+void insert(char val)
 {
-	for (auto x : lst) {
-		out << x;
+	t_node *node = (t_node *)malloc(sizeof(t_node));
+	node->val = val;
+	node->prev = NULL;
+	node->next = NULL;
+	
+	if (head->next == NULL) { // begin
+		head->next = node;
+		node->prev = head;
+		cur = node;
+	} else if (cur->next == NULL) { //end 
+		node->prev = cur;
+		cur->next = node;
+		cur = node;
+	} else if (cur->next != NULL) { 
+		t_node *tmp = cur->next;
+		node->next = tmp;
+		node->prev = cur;
+		cur->next = node;
+		tmp->prev = node;
+		cur = node;
 	}
-	return out;
+}
+
+void del()
+{
+	if (cur != head) {
+		cur->prev->next = cur->next;
+		if (cur->next)
+			cur->next->prev = cur->prev;
+		else
+			cur->next = NULL;
+		cur = cur->prev;
+	}
+}
+
+void left()
+{
+	if (cur->prev) {
+		cur = cur->prev;
+	}
+}
+
+void right()
+{
+	if (cur->next) {
+		cur = cur->next;
+	}
 }
 
 int main()
 {
 	FAST;
 	string inp;
-	list<char> lst;
 	int N;
 	cin >> inp >> N;
+	head = (t_node*)malloc(sizeof(t_node));
+	head->val = 0;
+	head->next = NULL;
+	head->prev = NULL;
 	for (auto x : inp) {
-		lst.push_back(x);
+		insert(x);
 	}
-	auto L = lst.end();
 	for (int i = 0; i < N; i++) {
 		char cmd, arg;
 		cin >> cmd;
 		if (cmd == 'P') {
 			cin >> arg;
-			lst.insert(L, arg);
+			insert(arg);
 		} else if (cmd == 'L') {
-			if (L != lst.begin())
-				L--;
+			left();
 		} else if (cmd == 'D') {
-			if (L != lst.end())
-				L++;
+			right();
 		} else if (cmd == 'B') {
-			if (L != lst.begin()) {
-				L--;
-				L = lst.erase(L);
-			}
+			del();
 		}
 	}
-	cout << lst;
+    cur = head->next;
+	while (cur) {
+		cout << cur->val;
+		cur = cur->next;
+	}
 	return 0;
 }
