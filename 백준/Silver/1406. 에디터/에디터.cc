@@ -47,8 +47,7 @@ void del()
 		cur->prev->next = cur->next;
 		if (cur->next)
 			cur->next->prev = cur->prev;
-		else
-			cur->next = NULL;
+        free(cur);
 		cur = cur->prev;
 	}
 }
