@@ -1,5 +1,5 @@
 #include <iostream>
-#include <vector>
+#include <queue>
 #include <algorithm>
 // #pragma GCC optimize("O3")
 // #pragma GCC optimize("Ofast")
@@ -10,32 +10,25 @@ using namespace std;
 int main()
 {
 	FAST;
-	vector<int> mem;
-	vector<int> v;
+	queue<int> q;
 	int N, K, idx;
 	char comm[3] = {0, ' ', 0};
 	cin >> N >> K;
-	mem.assign(N, 0);
-	idx = K - 1;
-	int j = 0;
-	mem[idx] = 1;
-	v.push_back(idx + 1);
-	while (v.size() != (size_t)N) {
-		idx++;
-		idx %= N;
-		if (mem[idx] != 1) {
-			j++;
-			if (j == K) {
-				j = 0;
-				v.push_back(idx + 1);
-				mem[idx] = 1;
-			}
-		}
+	for (int i = 1; i <= N; i++) {
+		q.push(i);
 	}
 	cout << '<';
-	for (auto x : v) {
-		cout << comm << x;
-		comm[0] = ',';
+	idx = 0;
+	while (!q.empty()) {
+		if (idx == K - 1) {
+			cout << comm << q.front();
+			comm[0] = ',';
+			idx = 0;
+		} else {
+			q.push(q.front());
+			idx++;
+		}
+		q.pop();
 	}
 	cout << '>';
 	return 0;
