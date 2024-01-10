@@ -16,7 +16,7 @@ int main()
 	for (int i = 0; i < len; i++) {
 		int c;
 		int num = N[i] - '0';
-		char bit[4] = {'0','0','0', 0};
+		char bit[4] = "000";
 		for (int j = 0; j < 3; j++) {
 			c = num % 2;
 			if (c) bit[2 - j] = '1';
