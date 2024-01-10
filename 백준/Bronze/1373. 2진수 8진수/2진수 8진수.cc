@@ -10,7 +10,7 @@ int main()
 {
 	FAST;
 	string N;
-	vector<int> v;
+	string v;
 	cin >> N;
 	int len = N.length();
 	for (int i = len - 1; i >= 0; i-=3) {
@@ -20,10 +20,9 @@ int main()
 			res += (N[i - j] - '0') * base;
 			base *= 2;
 		}
-		v.push_back(res);
+		v.push_back(res + '0');
 	}
-	for (int i = v.size() - 1; i >= 0; i--) {
-		printf("%d", v[i]);
-	}
+	reverse(v.begin(), v.end());
+	cout << v;
 	return 0;
 }
