@@ -9,11 +9,11 @@ int main()
 {
 	FAST;
 	int a[MAX] = {0, };
-	fill(a + 2, a + MAX, 1);
+	// fill(a + 2, a + MAX, 1);
 	for (int i = 2; i < sqrt(MAX); i++) {
-		if (a[i] != 1) continue ;
+		if (a[i] == 1) continue ;
 		for (int j = 2; i * j < MAX; j++) {
-			a[i * j] = 0;
+			a[i * j] = 1;
 		}
 	}
 	int inp;
@@ -22,7 +22,7 @@ int main()
 		if (inp == 0) break;
 		bool is_wrong = true;
 		for (int i = 3; i < inp; i++) {
-			if (a[i] && a[inp - i]) {
+			if (a[i] == 0 && a[inp - i] == 0) {
 				cout << inp << " = " << i << " + " << inp - i << '\n';
 				is_wrong = false;
 				break ;
