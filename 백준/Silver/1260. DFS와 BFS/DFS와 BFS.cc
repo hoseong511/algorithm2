@@ -5,48 +5,40 @@
 
 using namespace std;
 
-template <typename T>
-void print(T& vec)
-{
-	char spac[2] = {0, 0};
-	for (int x : vec) {
-		printf("%s%d", spac, x);
-		spac[0] = ' ';
-	}
-	printf("\n");
-}
+vector<vector<int>> graph;
+vector<int> chk;
 
-void dfs(vector<vector<int>> graph, int V, vector<int>& tar, int N)
+void dfs(int V, int N)
 {
-	if (tar.size() == (size_t)N) {
+	if (N == 0)
 		return ;
-	}
-	tar.push_back(V);
+	printf("%d ", V);
+	chk[V] = 1;
 	for (auto x : graph[V]) {
-		if (find(tar.begin(), tar.end(), x) != tar.end())
-			continue ;
-		dfs(graph, x, tar, N);
+		if (chk[x]) continue;
+		dfs(x, N--);
 	}
 }
 
-void bfs(vector<vector<int>> graph, int V)
+void bfs(int V)
 {
-	deque<int> q, tar;
+	deque<int> q;
 	q.push_back(V);
-	tar.push_back(V);
+	chk[V] = 1;
+	printf("%d ", V);
 	while (!q.empty()) {
 		size_t len = q.size();
 		for (size_t i = 0; i < len; i++) {
 			for (auto x : graph[q.front()]) {
-				if (find(tar.begin(), tar.end(), x) != tar.end())
-					continue ;
+				if (chk[x])	continue ;
 				q.push_back(x);
-				tar.push_back(x);
+				chk[x] = 1;
+				printf("%d ", x);
 			}
 			q.pop_front();
 		}
 	}
-	print(tar);
+	printf("\n");
 }
 
 int main()
@@ -55,18 +47,19 @@ int main()
 	int x, y;
 
 	scanf("%d %d %d", &N, &M, &V);
-	vector<vector<int>> lst(N + 1);
+	graph.assign(N+1, {});
+	chk.assign(N + 1, 0);
 	for (int i = 0; i < M; i++) {
 		scanf("%d %d", &x, &y);
-		lst[x].push_back(y);
-		lst[y].push_back(x);
+		graph[x].push_back(y);
+		graph[y].push_back(x);
 	}
-	for (size_t i = 0; i < lst.size(); i++)
-		sort(lst[i].begin(), lst[i].end());
-	vector<int> tar;
-	deque<int> tar2;
-	dfs(lst, V, tar, N);
-	print(tar);
-	bfs(lst, V);
+	for (size_t i = 0; i < graph.size(); i++)
+		sort(graph[i].begin(), graph[i].end());
+	dfs(V, N);
+	printf("\n");
+	chk.clear();
+	chk.assign(N + 1, 0);
+	bfs(V);
 	return 0;
 }
