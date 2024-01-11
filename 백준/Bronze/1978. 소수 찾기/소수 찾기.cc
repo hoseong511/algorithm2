@@ -1,24 +1,27 @@
 #include <cstdio>
-#include <cmath>
+#include <string.h>
 
-int isprime(int n)
+bool arr[1001] = {0, };
+void prime()
 {
-	if (n == 1)
-		return 0;
-	for (int i = 2; (double)i <= sqrt(n); i++) {
-		if (n % i == 0)
-			return 0;
+	memset(arr + 2, true, sizeof(arr) - 2);
+	for (int i = 2; i <= 1000; i++) {
+		if (arr[i] == false)
+			continue ;
+		for (int j = i * i; j <= 1000; j += i) {
+			arr[j] = false;
+		}
 	}
-	return 1;	
 }
 
 int main()
 {
 	int N, num, cnt = 0;
 	scanf("%d", &N);
+	prime();
 	for (int i = 0; i < N; i++) {
 		scanf("%d", &num);
-		if (isprime(num))
+		if (arr[num])
 			cnt++;
 	}
 	printf("%d\n", cnt);
