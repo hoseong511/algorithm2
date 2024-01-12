@@ -1,64 +1,66 @@
-#include <cstdio>
-#include <vector>
-#include <deque>
+#include <iostream>
 #include <algorithm>
-
+#include <cmath>
+#include <vector>
+#include <queue>
+#define FAST ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 using namespace std;
-
-vector<vector<int>> graph;
+vector<vector<int>> g;
 vector<int> chk;
 
-void dfs(int V, int N)
+char sp[2] = {0, 0};
+void dfs(int node, int depth)
 {
-	if (N == 0)
-		return ;
-	printf("%d ", V);
-	chk[V] = 1;
-	for (auto x : graph[V]) {
-		if (chk[x]) continue;
-		dfs(x, N--);
+	if (depth == 0)
+		return;
+	cout << sp << node;
+	sp[0] = ' ';
+	chk[node] = 1;
+	for (auto x : g[node]) {
+		if (chk[x] == 1) continue ;
+		dfs(x, depth - 1);
 	}
 }
 
-void bfs(int V)
+void bfs(int node)
 {
-	deque<int> q;
-	q.push_back(V);
-	chk[V] = 1;
-	printf("%d ", V);
+	queue<int> q;
+	q.push(node);
+	cout << sp << node;
+	sp[0] = ' ';
+	chk[node] = 1;
 	while (!q.empty()) {
-		size_t len = q.size();
-		for (size_t i = 0; i < len; i++) {
-			for (auto x : graph[q.front()]) {
-				if (chk[x])	continue ;
-				q.push_back(x);
+		int len = q.size();
+		for (int i = 0; i < len; i++) {
+			for (auto x : g[q.front()]) {
+				if (chk[x]) continue ;
+				q.push(x);
+				cout << sp << x;
 				chk[x] = 1;
-				printf("%d ", x);
 			}
-			q.pop_front();
+			q.pop();
 		}
 	}
-	printf("\n");
 }
-
 int main()
 {
+	FAST;
 	int N, M, V;
-	int x, y;
-
-	scanf("%d %d %d", &N, &M, &V);
-	graph.assign(N+1, {});
+	cin >> N >> M >> V;
+	g.assign(N + 1, {});
 	chk.assign(N + 1, 0);
 	for (int i = 0; i < M; i++) {
-		scanf("%d %d", &x, &y);
-		graph[x].push_back(y);
-		graph[y].push_back(x);
+		int x, y;
+		cin >> x >> y;
+		g[x].push_back(y);
+		g[y].push_back(x);
 	}
-	for (size_t i = 0; i < graph.size(); i++)
-		sort(graph[i].begin(), graph[i].end());
+	for (int i = 1; i <= N; i++) {
+		sort(g[i].begin(), g[i].end());
+	}
 	dfs(V, N);
-	printf("\n");
-	chk.clear();
+	cout << '\n';
+	sp[0] = 0;
 	chk.assign(N + 1, 0);
 	bfs(V);
 	return 0;
