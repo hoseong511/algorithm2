@@ -7,8 +7,8 @@
 // #pragma optimize("unroll-loops")j
 #define FAST ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 using namespace std;
-vector<int> g;
-vector<char> chk;
+int g[1001];
+char chk[1001];
 
 void cycle(int node)
 {
@@ -26,10 +26,8 @@ int main()
 	for (int i = 0; i< T; i++) {
 		int V;
 		cin >> V;
-		g.clear();
-		g.assign(V + 1, 0);
-		chk.clear();
-		chk.assign(V + 1, 0);
+		fill(g, g + 1001, 0);
+		fill(chk, chk + 1001, 0);
 		for (int i = 1; i <= V; i++) {
 			cin >> g[i];
 		}
