@@ -33,9 +33,6 @@ int main()
 		g[x].push_back(y);
 		g[y].push_back(x);
 	}
-	for (int i = 1; i <= N; i++) {
-		sort(g[i].begin(), g[i].end());
-	}
 	int cnt = 0;
 	for (int i = 1; i <= N; i++) {
 		if (chk[i] == 1) continue ;
