@@ -8,7 +8,7 @@ using namespace std;
 #define MAX 100001
 int g[MAX];
 bool chk[MAX];
-int done[MAX];
+bool done[MAX];
 
 int cycle(int node)
 {
