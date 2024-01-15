@@ -7,23 +7,22 @@
 using namespace std;
 #define MAX 100001
 int g[MAX];
-bool chk[MAX];
-bool done[MAX];
+char state[MAX]; // -1 visited, 0 not visited, 1 cycle chk
 
 int cycle(int node)
 {
 	int cnt = 0;
-	if (chk[node]) {
-		if (done[node] == 0) {
+	if (state[node]) {
+		if (state[node] == -1) {
 			for (int i = g[node]; i != node; i = g[i])
 				cnt++;
 			cnt++;
 		}
 		return cnt;
 	}
-	chk[node] = 1;
+	state[node] = -1;
 	cnt = cycle(g[node]);
-	done[node] = 1;
+	state[node] = 1;
 	return cnt;
 }
 int main()
@@ -34,13 +33,12 @@ int main()
 	for (int i = 0; i< T; i++) {
 		cin >> n;
 		fill(g, g + n + 1, 0);
-		fill(chk, chk + n + 1, 0);
-		fill(done, done + n + 1, 0);
+		fill(state, state + n + 1, 0);
 		for (int j =1; j <= n; j++)
 			cin >> g[j];
 		int cnt = 0;
 		for (int j = 1; j <= n; j++){
-			if (chk[j]) continue;
+			if (state[j]) continue;
 			cnt += cycle(j);
 		}
 		cout << n - cnt << '\n';
