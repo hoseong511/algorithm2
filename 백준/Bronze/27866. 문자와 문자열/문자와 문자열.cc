@@ -1,10 +1,11 @@
 #include <iostream>
-
+#define FAST ios::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+using namespace std;
 int main()
 {
-	std::string str;
-	int n;
-	std::cin >> str;
-	std::cin >> n;
-	std::cout << str[n - 1] << std::endl;
+	string inp;
+	int idx;
+	cin >> inp >> idx;
+	cout << inp[idx - 1] << '\n';
+	return 0;
 }
