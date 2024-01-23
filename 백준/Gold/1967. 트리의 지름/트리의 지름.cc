@@ -36,10 +36,10 @@ int main()
 		g[n1].push_back({n2, d});
 		g[n2].push_back({n1, d});
 	}
-	for (int i = 1; i < N; i++) {
-		dfs(i, 0);
-		memset(chk, 0, sizeof(chk));
-	}
+	dfs(1, 0);
+	memset(chk, 0, sizeof(chk));
+	max_dist = 0;
+	dfs(max_node, 0);
 	cout << max_dist;
 	return 0;
 }
